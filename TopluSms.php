@@ -120,6 +120,19 @@ class TopluSms
     return $this->sendRequest('http://www.toplusms.com.tr/api/mesaj_gonder', 'data=' . $xml);
   }
 
+  /**
+   * @param $text
+   * @array $numbers
+   * @return string
+   */
+  function singleToMulti($text, $numbers, $sendDate = null)
+  {
+    $nums = join(',',$numbers);
+    $xml = "<SingleTextSMS><UserName>$this->username</UserName><PassWord>$this->password</PassWord><Action>1</Action><Mesgbody>$text</Mesgbody><Numbers>$nums</Numbers><Originator>$this->origin</Originator><SDate>$sendDate</SDate></SingleTextSMS>";
+
+    return $this->sendRequest('http://www.toplusms.com.tr/api/mesaj_gonder', 'data=' . $xml);
+  }
+
 
   /**
    * @param $id (Message ID)

@@ -15,6 +15,12 @@ Saat alanını boş bırakırsanız hemen gönderim yapar. Belirli bir saatte g�
     $sms->singleSms('544xxxxxxx','Mesaj Metni','300420171957');
 ```
 
+#Tek Metni Birden Çok Alıcıya Gönder
+```php
+    $numbers = ['544xxxxxxx','542xxxxxxx'];
+    $sms->singleToMulti('Mesaj Metni',$numbers);
+```
+
 ### Toplu SMS Gönder
 ```php
     $messages = array(
