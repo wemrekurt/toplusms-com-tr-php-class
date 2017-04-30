@@ -122,25 +122,9 @@ class TopluSms
 
 
   /**
-   * @param $text
-   * @array $numbers
+   * @param $id (Message ID)
    * @return string
    */
-  function singleToMulti($text, $numbers, $sendDate = null)
-  {
-    $xml = PHP_EOL;
-    $xml .= "<SingleTextSMS><UserName>" . $this->username . "</UserName><PassWord>" . $this->password . "</PassWord><Action>1</Action><Mesgbody>$text</Mesgbody><Numbers>";
-    foreach ($numbers as $key => $number) {
-      $xml .= $number;
-      if ($key + 1 != count($numbers))
-        $xml .= ',';
-    }
-    $xml .= "</Numbers><Originator>" . $this->origin . "</Originator><SDate>$sendDate</SDate></SingleTextSMS>";
-
-    return $this->sendRequest('http://www.toplusms.com.tr/api/mesaj_gonder', 'data=' . $xml);
-  }
-
-
   function getReportId($id)
   {
     /**
